@@ -1,4 +1,6 @@
 fileignoreconfig:
+- filename: src/main/java/org/mcartagena/certification/streams/UsingCommonIntermediateOperations.java
+  checksum: 661bb7c88607ded4f071561ab06114ebc79b870f04cc2b76c00cd3dd91255a11
 - filename: src/main/java/org/mcartagena/certification/streams/UsingCommonTerminalOperations.java
   checksum: df3eeafaf3dad714d0bb9d0c5e3a3e3a498ae5e2a0e12eb35b814cd94b872a29
 version: "1.0"
