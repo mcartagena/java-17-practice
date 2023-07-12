@@ -18,5 +18,14 @@ public class TestingArrayDeque {
 
         while (greetings.peek() != null)
             System.out.print(greetings.pop());
+
+        System.out.println("\n------------");
+
+        var queue = new ArrayDeque<>();
+        queue.offer("exelsior");
+        queue.peekFirst();
+        queue.addFirst("edwin");
+        queue.removeLast();
+        System.out.println(queue);
     }
 }
