@@ -1,9 +1,7 @@
 package org.mcartagena.certification.streams;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
 import java.util.stream.*;
 
@@ -102,6 +100,30 @@ public class TestingStream {
 
         var split = spliterator.trySplit();
         split.tryAdvance(System.out::println);
+
+        var list = List.of('c', 'b', 'a');
+
+        list.stream()
+                .sorted()
+                .findAny()
+                .ifPresent(System.out::println);
+
+        System.out.println(list.stream().sorted().findFirst());  // Optional[a], Optional[b], or Optional[c]
+
+        var s2 = Stream.of("speak", "bark", "meow", "growl");
+        BinaryOperator<String> merge = (a, b) -> a;
+        var map = s2.collect(Collectors.toMap(
+                String::length, k -> k, merge));
+        System.out.println(map.size() + " " + map.get(4));  // 2 bark
+
+        Set<String> set = new HashSet<>();
+        set.add("tire-");
+         List<String> list1 = new LinkedList<>();
+         Deque<String> queue = new ArrayDeque<>();
+         queue.push("wheel-");
+         Stream.of(set.stream(), list1.stream(), queue.stream()) // does not compile if set list and queue without stream()
+           .flatMap(x -> x)
+           .forEach(System.out::print);  // tire-wheel-
 
     }
 }
